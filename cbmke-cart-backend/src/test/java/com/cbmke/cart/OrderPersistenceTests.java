@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cbmke.cart.backend.entities.LineItem;
-import com.cbmke.cart.backend.entities.CustomerOrder;
+import com.cbmke.cart.backend.entities.Order;
 
 @ContextConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,7 +25,7 @@ public class OrderPersistenceTests {
 	@Transactional
 	public void testSaveOrderWithItems() throws Exception {
 		Session session = sessionFactory.getCurrentSession();
-		CustomerOrder order = new CustomerOrder();
+		Order order = new Order();
 		LineItem li = new LineItem();
 		li.setCustomerOrder(order);
 		order.getItems().add(li);
@@ -33,7 +33,7 @@ public class OrderPersistenceTests {
 		session.flush();
 		Long id = order.getId();
 		order = null;
-		order = (CustomerOrder)session.createQuery("from CustomerOrder o where o.id=:id")
+		order = (Order)session.createQuery("from Order o where o.id=:id")
 				.setLong("id", id).uniqueResult();
 		assertNotNull(order.getId());
 		assertEquals(1, order.getItems().size());

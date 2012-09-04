@@ -12,7 +12,7 @@ import org.springframework.orm.hibernate3.HibernateTransactionManager;
 import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
 
 import com.cbmke.cart.backend.entities.LineItem;
-import com.cbmke.cart.backend.entities.CustomerOrder;
+import com.cbmke.cart.backend.entities.Order;
 
 @Configuration
 public class HibernateConfiguration {
@@ -29,7 +29,7 @@ public class HibernateConfiguration {
 		props.put("hibernate.hbm2ddl.auto", "update");
 
 		AnnotationSessionFactoryBean bean = new AnnotationSessionFactoryBean();
-		bean.setAnnotatedClasses(new Class[]{LineItem.class, CustomerOrder.class});		
+		bean.setAnnotatedClasses(new Class[]{LineItem.class, Order.class});		
 		bean.setHibernateProperties(props);
 		bean.setDataSource(this.dataSource);
 		bean.setSchemaUpdate(true);

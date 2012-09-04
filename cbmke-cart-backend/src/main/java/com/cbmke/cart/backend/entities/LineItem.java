@@ -18,24 +18,25 @@ public class LineItem {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
-	private CustomerOrder customerOrder;
-	
-	@OneToOne
-	private Item item;
+	@ManyToOne
+	private Order customerOrder;
 	
 	private int quantity;
+		
+	/*@OneToOne
+	private Item item;
 	
 	public Item getItem() {
 		return item;
 	}
 	
-	public int getQuantity() {
-		return quantity;
-	}
-	
 	public void setItem(Item item) {
 		this.item = item;
+	}
+	*/
+	
+	public int getQuantity() {
+		return quantity;
 	}
 	
 	public void setQuantity(int quantity) {
@@ -46,11 +47,11 @@ public class LineItem {
 		return id;
 	}
 	
-	public CustomerOrder getCustomerOrder() {
+	public Order getCustomerOrder() {
 		return customerOrder;
 	}
 	
-	public void setCustomerOrder(CustomerOrder customerOrder) {
+	public void setCustomerOrder(Order customerOrder) {
 		this.customerOrder = customerOrder;
 	}
 }

@@ -9,20 +9,24 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 /**
  * An order.
  */
 @Entity
-public class CustomerOrder {
+@Table(name="ORDERS")
+public class Order {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@OneToMany(mappedBy="customerOrder", cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="ORDER_ID")
 	private Collection<LineItem> items = new ArrayList<LineItem>();
 
 	public Long getId() {
