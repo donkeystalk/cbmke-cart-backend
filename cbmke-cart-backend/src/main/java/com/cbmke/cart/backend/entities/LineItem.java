@@ -1,10 +1,10 @@
 package com.cbmke.cart.backend.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
@@ -23,7 +23,8 @@ public class LineItem {
 	
 	private int quantity;
 		
-	/*@OneToOne
+	@OneToOne
+	@JoinColumn(name="ITEM_ID")
 	private Item item;
 	
 	public Item getItem() {
@@ -33,7 +34,6 @@ public class LineItem {
 	public void setItem(Item item) {
 		this.item = item;
 	}
-	*/
 	
 	public int getQuantity() {
 		return quantity;

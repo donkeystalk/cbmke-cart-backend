@@ -2,7 +2,6 @@ package com.cbmke.cart.backend.entities;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -25,16 +24,16 @@ public class Order {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
 	@JoinColumn(name="ORDER_ID")
-	private Collection<LineItem> items = new ArrayList<LineItem>();
+	private Collection<LineItem> lineItems = new ArrayList<LineItem>();
 
 	public Long getId() {
 		return id;
 	}
 	
-	public Collection<LineItem> getItems() {
-		return items;
+	public Collection<LineItem> getLineItems() {
+		return lineItems;
 	}
 	
 	public void setId(Long id) {

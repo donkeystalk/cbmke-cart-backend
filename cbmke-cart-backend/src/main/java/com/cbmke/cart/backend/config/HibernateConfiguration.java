@@ -11,9 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate3.HibernateTransactionManager;
 import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
 
-import com.cbmke.cart.backend.entities.LineItem;
-import com.cbmke.cart.backend.entities.Order;
-
 @Configuration
 public class HibernateConfiguration {
 
@@ -26,10 +23,10 @@ public class HibernateConfiguration {
 		props.put("hibernate.dialect", H2Dialect.class.getName());
 		props.put("hibernate.format_sql", "true");
 		props.put("hibernate.show_sql", "true");
-		props.put("hibernate.hbm2ddl.auto", "update");
+		props.put("hibernate.hbm2ddl.auto", "create-drop");
 
 		AnnotationSessionFactoryBean bean = new AnnotationSessionFactoryBean();
-		bean.setAnnotatedClasses(new Class[]{LineItem.class, Order.class});		
+		bean.setPackagesToScan(new String[]{"com.cbmke.cart.backend.entities"});
 		bean.setHibernateProperties(props);
 		bean.setDataSource(this.dataSource);
 		bean.setSchemaUpdate(true);
