@@ -8,9 +8,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-/**
- * An item in an order
- */
 @Entity
 public class LineItem {
 
@@ -22,7 +19,7 @@ public class LineItem {
 	private Order customerOrder;
 	
 	private int quantity;
-		
+	
 	@OneToOne
 	@JoinColumn(name="ITEM_ID")
 	private Item item;

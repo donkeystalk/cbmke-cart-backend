@@ -12,10 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-/**
- * An order.
- */
 @Entity
 @Table(name="ORDERS")
 public class Order {
